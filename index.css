@@ -1,0 +1,25 @@
+div {
+  border: 1px #ccc solid;
+  padding: 10px;
+}
+.container {
+  display: flex;
+}
+
+h1 {
+  text-align: center;
+}
+
+#buttons {
+  margin: 0 auto;
+  width: 60%;
+}
+
+#buttons div {
+  width: 50%;
+}
+
+#buttons div button {
+  margin: 0 auto;
+  width: 30%;
+}
