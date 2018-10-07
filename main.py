@@ -27,10 +27,9 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
 def make_app():
     root = os.path.dirname(os.path.abspath(__file__))
     return tornado.web.Application([
-        (r"/", MainHandler),
         (r"/resources/(.*)", tornado.web.StaticFileHandler, {"path": root}),
         (r"/websocket", EchoWebSocket)
-    ])
+    ], default_handler_class=MainHandler)
 
 if __name__ == "__main__":
     app = make_app()
