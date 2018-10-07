@@ -1,21 +1,18 @@
-// class Team() {
-//   constructor(name, score) {
-//     this.name = name;
-//     this.score = score;
-//   }
-// }
-
-// class GameData() {
-//   constructor(team1, team2, mode) {
-//     this.team1 = team1;
-//     this.team2 = team2;
-//     this.mode = mode;
-//   }
-// }
 var ws = new WebSocket("ws://localhost:8888/socControl");
+
+try {
+  var data = new GameData();
+} catch(err) {
+  console.error("gameData.js not included! Make sure you have <script src=\"resources/gameData.js\"></script> included above the inclusion of this script in your HTML!");
+}
+
 ws.onopen = function() {
-   ws.send("Hello, world");
+   // ws.send("Hello, world");
 };
 ws.onmessage = function (evt) {
-   console.log(evt.data);
+  console.debug("Recieved:" + evt.data);
+  data = stringToGameData(evt.data);
+
+  console.debug("Parsed into:");
+  console.debug(data);
 };
