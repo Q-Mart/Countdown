@@ -20,6 +20,10 @@ h1 {
   text-align: center;
 }
 
+#teams {
+  display: flex;
+}
+
 #buttons {
   margin: 0 auto;
   width: 60%;

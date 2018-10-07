@@ -11,18 +11,26 @@
 <body>
   <h1>Countdown Control Panel</h1>
 
-  <div id="container">
-    <div id="teams">
+  <div class="container">
+    <div id="gameData">
+      <form>
       <h3>Teams</h3>
-      <h4 id="team1Name"></h4>
-      <h4 id="team2Name"></h4>
-    </div>
+      <table id="teams">
+        <tr>
+          <td><input type="text" name="team1Name" id="team1Name"></td>
+          <td><h4 id="team1Score"></h4></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="team2Name" id="team2Name"></td>
+          <td><h4 id="team2Score"></h4></td>
+        </tr>
+      </table>
 
-    <div id="mode">
       <h3>Mode</h3>
-      <button>PAUSE</button>
-      <button>LETTERS</button>
-      <button>NUMBERS</button>
+      <input type="radio" name="modeSelection" id="radioPause">PAUSE</br>
+      <input type="radio" name="modeSelection" id="radioLetters">LETTERS</br>
+      <input type="radio" name="modeSelection" id="radioNumbers">NUMBERS</br>
+      </form>
     </div>
 
     <div id="gameButtons">
