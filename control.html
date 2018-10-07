@@ -4,13 +4,33 @@
 <head>
   <meta charset="utf-8">
   <title>Countdown</title>
-  <link rel="stylesheet" href="resources/index.css">
+  <link rel="stylesheet" href="resources/control.css">
 
 </head>
 
 <body>
   <h1>Countdown Control Panel</h1>
 
-  <script src="resources/ws.js"></script>
+  <div id="container">
+    <div id="teams">
+      <h3>Teams</h3>
+      <h4 id="team1Name"></h4>
+      <h4 id="team2Name"></h4>
+    </div>
+
+    <div id="mode">
+      <h3>Mode</h3>
+      <button>PAUSE</button>
+      <button>LETTERS</button>
+      <button>NUMBERS</button>
+    </div>
+
+    <div id="gameButtons">
+      <button></button>
+      <button></button>
+    </div>
+  </div>
+
+  <script src="resources/control.js"></script>
 </body>
 </html>

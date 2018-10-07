@@ -1,0 +1,37 @@
+/* debug */
+div {
+  border: 1px #ccc solid;
+  padding: 10px;
+}
+
+body {
+  /* background-color: #33478E; */
+  background-color: #2EBDDB;
+
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+  color: white;
+}
+
+.container {
+  display: flex;
+}
+
+h1 {
+  text-align: center;
+}
+
+#buttons {
+  margin: 0 auto;
+  width: 60%;
+}
+
+#buttons div {
+  width: 50%;
+  display: flex;
+}
+
+#buttons div button {
+  margin: 0 auto;
+  width: 50%;
+  align-items: center;
+}

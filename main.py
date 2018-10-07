@@ -2,9 +2,12 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
+import gameData
 
 # TODO move this to cfg
 PORT = 8888
+
+data = gameData.GameData()
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -35,6 +38,20 @@ class EchoWebSocket(tornado.websocket.WebSocketHandler):
     def check_origin(self, origin):
         return True
 
+class ControlWebSocketHandler(tornado.websocket.WebSocketHandler):
+    def open(self):
+        print("Control WebSocket opened")
+        self.write_message(data.toJSON())
+
+    def on_message(self, message):
+        self.write_message(u"You said: " + message)
+
+    def on_close(self):
+        print("WebSocket closed")
+
+    def check_origin(self, origin):
+        return True
+
 
 def make_app():
     root = os.path.dirname(os.path.abspath(__file__))
@@ -43,6 +60,7 @@ def make_app():
         (r"/control", ControlHandler),
         (r"/display", DisplayHandler),
         (r"/resources/(.*)", tornado.web.StaticFileHandler, {"path": root}),
+        (r"/socControl", ControlWebSocketHandler),
         (r"/websocket", EchoWebSocket)
     ], default_handler_class=PageNotFoundHandler)
 
