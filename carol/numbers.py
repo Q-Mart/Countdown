@@ -19,6 +19,9 @@ def allResultsFrom(a,b):
 
 def pairsAndRejects(numbers):
     for pair in itertools.combinations(numbers, 2):
+
+        pair = tuple(sorted(pair))
+
         # We don't want to modify the original list
         rejects = list(numbers[:])
         del rejects[rejects.index(pair[0])]
@@ -35,12 +38,15 @@ def generateTree(numbers, target, t=None):
     for pair, rejects in pairsAndRejects(numbers):
         a, b = pair[0], pair[1]
         for op, c in allResultsFrom(a,b):
-            newNumbers = sorted(tuple(rejects + [c]))
+            newNumbers = tuple(sorted(rejects + [c]))
             newNode = Node(newNumbers)
-            t.children[newNode].append(str(a) + op + str(b))
+            if op in ['+', '*']:
+                t.children[newNode].append(str(a) + op + str(b))
+            else:
+                t.children[newNode].append(str(b) + op + str(a))
 
         for child in t.children.keys():
-            generateTree(newNumbers, target, child)
+            generateTree(child.value, target, child)
 
     return t
 
@@ -50,6 +56,7 @@ def findPath(target, root):
 
     while stack:
         (node, path) = stack.pop()
+        # print (node.value, path)
         if node.value == [15, 50]:
             for c, op in node.children.items():
                 print(node.value, c.value, op)
@@ -70,12 +77,12 @@ def prettyPrint(root):
 
 # nums = [5, 100, 25]
 # t = 125
-# g = generateTree(nums, t)
-# print (findPath(t, g))
 
-nums = [25, 5, 3, 2]
-t = 750
+# nums = [25, 5, 3, 2]
+# t = 750
+
+nums = [3, 6, 25, 50, 75, 100]
+t = 952
+
 g = generateTree(nums, t)
-# for k,v in g.children.items():
-#     print (v)
 print (findPath(t, g))
