@@ -1,0 +1,33 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Countdown</title>
+  <link rel="stylesheet" href="resources/css/general.css">
+  <link rel="stylesheet" href="resources/css/lettersSolver.css">
+
+</head>
+
+<body>
+  <h1>Letters Solver</h1>
+
+  <div class="container" id="main">
+    <div id="LHS">
+      <form id="solverForm" onsubmit="getSolutions()">
+        <label for"lettersInput">Enter the letters</label>
+        <input type="text" id="lettersInput" name="lettersInput" required
+        maxlength="9" pattern="[A-Za-z]*" placeholder="Enter your letters here">
+        <input type="submit" value="Solve">
+      <form>
+    </div>
+
+    <div id="RHS">
+      <label id="resultLabel"><label>
+      <ul id="resultList">
+      </ul>
+    </div>
+  </div>
+  <script src="resources/js/lettersSolver.js"></script>
+</body>
+</html>

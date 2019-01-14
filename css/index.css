@@ -4,17 +4,6 @@
 /*   padding: 10px; */
 /* } */
 
-body {
-  /* background-color: #33478E; */
-  background-color: #2EBDDB;
-
-  font-family: Futura,Trebuchet MS,Arial,sans-serif;
-  color: white;
-}
-
-.container {
-  display: flex;
-}
 
 h1 {
   text-align: center;

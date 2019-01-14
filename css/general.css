@@ -1,0 +1,11 @@
+body {
+  background-color: #33478E;
+  /* background-color: #163b8d */
+
+  font-family: Futura,Trebuchet MS,Arial,sans-serif;
+  color: white;
+}
+
+.container {
+  display: flex;
+}

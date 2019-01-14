@@ -5,25 +5,29 @@ import tornado.websocket
 import gameData
 
 # TODO move this to cfg
-PORT = 8888
+PORT = 80
 
 data = gameData.GameData()
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("index.html")
+        self.render("html/index.html")
 
 class PageNotFoundHandler(tornado.web.RequestHandler):
     def get(self):
         self.redirect("/", True)
 
+class LettersSolverHandler(tornado.web.RequestHandler):
+    def get(self):
+        self.render("html/lettersSolver.html")
+
 class ControlHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("control.html")
+        self.render("html/control.html")
 
 class DisplayHandler(tornado.web.RequestHandler):
     def get(self):
-        self.render("display.html")
+        self.render("html/display.html")
 
 class EchoWebSocket(tornado.websocket.WebSocketHandler):
     def open(self):
@@ -57,12 +61,15 @@ def make_app():
     root = os.path.dirname(os.path.abspath(__file__))
     return tornado.web.Application([
         (r"/", MainHandler),
+        (r"/letters", LettersSolverHandler),
         (r"/control", ControlHandler),
         (r"/display", DisplayHandler),
-        (r"/resources/(.*)", tornado.web.StaticFileHandler, {"path": root}),
+        (r"/resources/js/(.*)", tornado.web.StaticFileHandler, {"path": "js/"}),
+        (r"/resources/css/(.*)", tornado.web.StaticFileHandler, {"path": "css/"}),
         (r"/socControl", ControlWebSocketHandler),
         (r"/websocket", EchoWebSocket)
-    ], default_handler_class=PageNotFoundHandler)
+    ], default_handler_class=PageNotFoundHandler,
+       autoreload=True)
 
 if __name__ == "__main__":
     app = make_app()
