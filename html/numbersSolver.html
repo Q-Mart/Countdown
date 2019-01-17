@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Countdown</title>
+  <link rel="stylesheet" href="resources/css/general.css">
+  <link rel="stylesheet" href="resources/css/numbersSolver.css">
+
+</head>
+
+<body>
+  <h1>Numbers Solver</h1>
+ 
+  <div class="container" id="main">
+    <div id="LHS">
+      <p>Enter the numbers</p>
+      <table>
+        <tr>
+          <td><input id="num1" type="number" min="1" max="100"></td>
+          <td><input id="num2" type="number" min="1" max="100"></td>
+          <td><input id="num3" type="number" min="1" max="100"></td>
+          <td><input id="num4" type="number" min="1" max="100"></td>
+          <td><input id="num5" type="number" min="1" max="100"></td>
+          <td><input id="num6" type="number" min="1" max="100"></td>
+        </tr>
+      </table>
+      <p>Enter the target number</p>
+      <input id="target" type="number" min="100" max="999">
+      <button id="btnSolve" onclick="getSolution();">Solve</button>
+      <p id="errorMsg"></p>
+    </div>
+
+    <div id="RHS">
+      <table id="pathTable">
+      </table>
+    </div>
+  </div>
+  <script src="resources/js/numbersSolver.js"></script>
+</body>
+</html>

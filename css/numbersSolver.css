@@ -1,0 +1,33 @@
+/* debug */
+/* div { */
+/*   border: 1px #ccc solid; */
+/*   padding: 10px; */
+/* } */
+
+
+h1 {
+  text-align: center;
+}
+
+#main {
+  margin: 0 auto;
+  width: 60%;
+}
+
+#main div {
+  display: flex;
+  flex-direction: column;
+}
+
+#main div button {
+  margin: 0 auto;
+  width: 50%;
+}
+
+input {
+  width: 3em;
+}
+
+#errorMsg {
+  color: red;
+}
