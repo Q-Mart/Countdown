@@ -14,16 +14,15 @@
 
   <div class="container" id="main">
     <div id="LHS">
-      <form id="solverForm" onsubmit="getSolutions()">
-        <label for"lettersInput">Enter the letters</label>
-        <input type="text" id="lettersInput" name="lettersInput" required
-        maxlength="9" pattern="[A-Za-z]*" placeholder="Enter your letters here">
-        <input type="submit" value="Solve">
-      <form>
+      <label for"lettersInput">Enter the letters</label>
+      <input type="text" id="lettersInput" name="lettersInput" required
+      maxlength="9" pattern="[A-Za-z]*" placeholder="Enter your letters here">
+      <button id="btnSolve" onclick="getSolutions();">Solve</button>
+      <p id="errorMsg"></p>
     </div>
 
     <div id="RHS">
-      <label id="resultLabel"><label>
+      <p id="resultLabel"></p>
       <ul id="resultList">
       </ul>
     </div>

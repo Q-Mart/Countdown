@@ -5,7 +5,7 @@ import tornado.websocket
 import gameData
 
 # TODO move this to cfg
-PORT = 80
+PORT = 8080
 
 data = gameData.GameData()
 
