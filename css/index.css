@@ -15,12 +15,13 @@ h1 {
 }
 
 #buttons div {
-  width: 50%;
   display: flex;
+  width: 50%;
+  justify-content: space-between;
+  flex-direction: column;
 }
 
 #buttons div button {
-  margin: 0 auto;
-  width: 50%;
   align-items: center;
+  margin: 5px;
 }

@@ -25,6 +25,10 @@ class NumbersSolverHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("html/numbersSolver.html")
 
+class RandomNumberDisplay(tornado.web.RequestHandler):
+    def get(self):
+        self.render("html/randomNumberDisplay.html")
+
 class ControlHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("html/control.html")
@@ -67,8 +71,7 @@ def make_app():
         (r"/", MainHandler),
         (r"/letters", LettersSolverHandler),
         (r"/numbers", NumbersSolverHandler),
-        (r"/control", ControlHandler),
-        (r"/display", DisplayHandler),
+        (r"/display", RandomNumberDisplay),
         (r"/resources/js/(.*)", tornado.web.StaticFileHandler, {"path": "js/"}),
         (r"/resources/css/(.*)", tornado.web.StaticFileHandler, {"path": "css/"}),
         (r"/socControl", ControlWebSocketHandler),
