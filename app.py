@@ -2,12 +2,9 @@ import os
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
-import gameData
 
 # TODO move this to cfg
 PORT = 8080
-
-data = gameData.GameData()
 
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
@@ -25,45 +22,9 @@ class NumbersSolverHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("html/numbersSolver.html")
 
-class RandomNumberDisplay(tornado.web.RequestHandler):
+class RandomNumberDisplayHandler(tornado.web.RequestHandler):
     def get(self):
         self.render("html/randomNumberDisplay.html")
-
-class ControlHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.render("html/control.html")
-
-class DisplayHandler(tornado.web.RequestHandler):
-    def get(self):
-        self.render("html/display.html")
-
-class EchoWebSocket(tornado.websocket.WebSocketHandler):
-    def open(self):
-        print("WebSocket opened")
-
-    def on_message(self, message):
-        self.write_message(u"You said: " + message)
-
-    def on_close(self):
-        print("WebSocket closed")
-
-    def check_origin(self, origin):
-        return True
-
-class ControlWebSocketHandler(tornado.websocket.WebSocketHandler):
-    def open(self):
-        print("Control WebSocket opened")
-        self.write_message(data.toJSON())
-
-    def on_message(self, message):
-        self.write_message(u"You said: " + message)
-
-    def on_close(self):
-        print("WebSocket closed")
-
-    def check_origin(self, origin):
-        return True
-
 
 def make_app():
     root = os.path.dirname(os.path.abspath(__file__))
@@ -71,13 +32,10 @@ def make_app():
         (r"/", MainHandler),
         (r"/letters", LettersSolverHandler),
         (r"/numbers", NumbersSolverHandler),
-        (r"/display", RandomNumberDisplay),
+        (r"/display", RandomNumberDisplayHandler),
         (r"/resources/js/(.*)", tornado.web.StaticFileHandler, {"path": "js/"}),
         (r"/resources/css/(.*)", tornado.web.StaticFileHandler, {"path": "css/"}),
-        (r"/socControl", ControlWebSocketHandler),
-        (r"/websocket", EchoWebSocket)
-    ], default_handler_class=PageNotFoundHandler,
-       autoreload=True)
+    ], default_handler_class=PageNotFoundHandler,)
 
 if __name__ == "__main__":
     app = make_app()
