@@ -15,7 +15,7 @@ function countVowels(str) {
 }
 
 function countConstanants(str) {
-  return countAgainst(str, 'bcdfghjklmnpqrstvwxy');
+  return countAgainst(str, 'bcdfghjklmnpqrstvwxyz');
 }
 
 function getSolutions() {
@@ -33,7 +33,7 @@ function getSolutions() {
     document.getElementById('errorMsg').innerHTML = '';
 
     const Http = new XMLHttpRequest();
-    const url='http://localhost:5000/letters?input='+input;
+    const url='http://countdown.qumarth.uk:5000/letters?input='+input;
     Http.open("GET", url);
     Http.send();
     Http.onreadystatechange=(e)=>{
