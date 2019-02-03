@@ -22,7 +22,7 @@ function getSolution() {
     startingNumbers = [num1,num2,num3,num4,num5,num6]
 
     const Http = new XMLHttpRequest();
-    const url='http://countdown.qumarth.uk:5000/numbers?numbers='+startingNumbers+'&target='+target;
+    const url='http://localhost:5000/numbers?numbers='+startingNumbers+'&target='+target;
     Http.open("GET", url);
     Http.send();
     Http.onreadystatechange=(e)=>{
